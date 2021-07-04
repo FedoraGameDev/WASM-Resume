@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FedoraDev.WASMResume.API", "FedoraDev.WASMResume.API\FedoraDev.WASMResume.API.csproj", "{7FCEC6A2-C875-47D9-A0EC-DA92F67DF318}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FedoraDev.WASMResume.Portal", "FedoraDev.WASMResume.Portal\FedoraDev.WASMResume.Portal.csproj", "{8465DB43-252D-475E-B0B8-6B6BFCFD6812}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7FCEC6A2-C875-47D9-A0EC-DA92F67DF318}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FCEC6A2-C875-47D9-A0EC-DA92F67DF318}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FCEC6A2-C875-47D9-A0EC-DA92F67DF318}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FCEC6A2-C875-47D9-A0EC-DA92F67DF318}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8465DB43-252D-475E-B0B8-6B6BFCFD6812}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8465DB43-252D-475E-B0B8-6B6BFCFD6812}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8465DB43-252D-475E-B0B8-6B6BFCFD6812}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8465DB43-252D-475E-B0B8-6B6BFCFD6812}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F240988B-E72A-42F1-ACA6-C9CA9E45FDD1}
+	EndGlobalSection
+EndGlobal
