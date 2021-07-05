@@ -1,7 +1,97 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
+<CoverImage URL="https://i.ytimg.com/vi/yUgx7s0VPs8/maxresdefault.jpg" TitleContent="Jimmy Satterfield" ParagraphContent="@TitleContent" />
 
-Welcome to your new app.
+@code {
+	string TitleContent => $"I {_title}{Cursor}";
+	string Cursor => _showCursor ? "|" : "&nbsp;";
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+	static readonly string[] _possibleTitles = new string[]
+	{
+		"am a developer",
+		"am fluent in C#",
+		"am acquanted with dotnet",
+		"enjoy puzzles",
+		"create games",
+		"make websites",
+		"work with Unity",
+		"run real-time simulations"
+	};
+
+	Random _random = new System.Random();
+	int[] _titleOrder;
+	int _currentTitleIndex = 0;
+	string _title = _possibleTitles[0];
+	string _nextTitle = _possibleTitles[0];
+	float _repeatDelay = 5f;
+	float _characterTypeDelay = 0.05f;
+	float _characterTypeVariance = 0.03f;
+	float _cursorBlinkDelay = 0.5f;
+	bool _showCursor = true;
+
+	protected override async Task OnInitializedAsync()
+	{
+		BlinkCursor();
+
+		_titleOrder = new int[_possibleTitles.Length];
+		for (int i = 0; i < _possibleTitles.Length; i++)
+			_titleOrder[i] = i;
+
+		while (true)
+		{
+			await Task.Delay((int)(_repeatDelay * 1000));
+			await DeleteCurrentTitle();
+			ChooseNextTitle();
+			await WriteNextTitle();
+		}
+	}
+
+	async Task BlinkCursor()
+	{
+		while (true)
+		{
+			await Task.Delay((int)(_cursorBlinkDelay * 1000));
+			_showCursor = !_showCursor;
+			StateHasChanged();
+		}
+	}
+
+	async Task DeleteCurrentTitle()
+	{
+		while (_title.Length > 0)
+		{
+			await Task.Delay(GetCharacterTypeDelay());
+			_title = _title.Substring(0, _title.Length - 1);
+			StateHasChanged();
+		}
+	}
+
+	void ChooseNextTitle()
+	{
+		_currentTitleIndex++;
+		if (_currentTitleIndex == _possibleTitles.Length)
+		{
+			_currentTitleIndex = 0;
+			_titleOrder = _titleOrder.OrderBy(x => _random.Next()).ToArray();
+		}
+
+		_nextTitle = _possibleTitles[_titleOrder[_currentTitleIndex]];
+	}
+
+	async Task WriteNextTitle()
+	{
+		while (_title.Length < _nextTitle.Length)
+		{
+			await Task.Delay(GetCharacterTypeDelay());
+			_title += _nextTitle.Substring(_title.Length, 1);
+			StateHasChanged();
+		}
+	}
+
+	int GetCharacterTypeDelay()
+	{
+		int delayMin = (int)((_characterTypeDelay - _characterTypeVariance) * 1000);
+		int delayMax = (int)((_characterTypeDelay + _characterTypeVariance) * 1000);
+		return _random.Next(delayMin, delayMax);
+	}
+}

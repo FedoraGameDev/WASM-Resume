@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FedoraDev.WASMResume.API", "FedoraDev.WASMResume.API\FedoraDev.WASMResume.API.csproj", "{7FCEC6A2-C875-47D9-A0EC-DA92F67DF318}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FedoraDev.WASMResume.API", "FedoraDev.WASMResume.API\FedoraDev.WASMResume.API.csproj", "{7FCEC6A2-C875-47D9-A0EC-DA92F67DF318}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FedoraDev.WASMResume.Portal", "FedoraDev.WASMResume.Portal\FedoraDev.WASMResume.Portal.csproj", "{8465DB43-252D-475E-B0B8-6B6BFCFD6812}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FedoraDev.WASMResume.Portal", "FedoraDev.WASMResume.Portal\FedoraDev.WASMResume.Portal.csproj", "{8465DB43-252D-475E-B0B8-6B6BFCFD6812}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

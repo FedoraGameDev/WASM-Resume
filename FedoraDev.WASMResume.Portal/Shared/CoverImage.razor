@@ -1,0 +1,29 @@
+﻿<div class="cover-image" style="background-image: url('@URL')">
+
+	@if (!string.IsNullOrWhiteSpace(TitleContent) || !string.IsNullOrWhiteSpace(ParagraphContent))
+	{
+		<div class="cover-text">
+			@if (!string.IsNullOrWhiteSpace(TitleContent))
+			{
+				<h1>@((MarkupString)TitleContent)</h1>
+			}
+
+			@if (!string.IsNullOrWhiteSpace(ParagraphContent))
+			{ 
+				<h3>@((MarkupString)ParagraphContent)</h3>
+			}
+		</div>
+	}
+
+</div>
+
+@code {
+	[Parameter]
+	public string URL { get; set; }
+
+	[Parameter]
+	public string TitleContent { get; set; }
+
+	[Parameter]
+	public string ParagraphContent { get; set; }
+}

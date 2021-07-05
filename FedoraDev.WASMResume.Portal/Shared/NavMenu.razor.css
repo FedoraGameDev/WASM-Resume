@@ -3,8 +3,10 @@
 }
 
 .top-row {
+    display: none;
     height: 3.5rem;
-    background-color: rgba(0,0,0,0.4);
+    background-color: #1d2e4d;
+    flex-direction: row-reverse;
 }
 
 .navbar-brand {
@@ -48,6 +50,16 @@
 .nav-item ::deep a:hover {
     background-color: rgba(255,255,255,0.1);
     color: white;
+}
+
+@media (max-width: 640.98px) {
+    .top-row {
+        display: flex;
+    }
+
+    .nav.flex-row {
+        flex-direction: column !important;
+    }
 }
 
 @media (min-width: 641px) {

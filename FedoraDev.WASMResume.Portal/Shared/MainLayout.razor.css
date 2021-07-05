@@ -6,10 +6,15 @@
 
 .main {
     flex: 1;
+    position: relative;
 }
 
 .sidebar {
-    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+    /*background-image: linear-gradient(180deg, #052767 0%, #052799 70%);*/
+    background-color: #1d2e4d;
+    z-index: 100;
+    position: fixed !important;
+    width: 100%;
 }
 
 .top-row {
@@ -47,12 +52,13 @@
 
 @media (min-width: 641px) {
     .page {
-        flex-direction: row;
+        /*flex-direction: row;*/
     }
 
     .sidebar {
-        width: 250px;
-        height: 100vh;
+        width: 100vw;
+        /*width: 250px;*/
+        /*height: 100vh;*/
         position: sticky;
         top: 0;
     }
@@ -64,7 +70,8 @@
     }
 
     .main > div {
-        padding-left: 2rem !important;
-        padding-right: 1.5rem !important;
+        padding: 0 !important;
+        /*padding-left: 2rem !important;
+        padding-right: 1.5rem !important;*/
     }
 }
