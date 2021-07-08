@@ -1,0 +1,13 @@
+﻿<div class="cover-image" style="background-image: url('@URL')">
+	<div class="image-filter">
+		@ChildContent
+	</div>
+</div>
+
+@code {
+	[Parameter]
+	public string URL { get; set; }
+
+	[Parameter]
+	public RenderFragment ChildContent { get; set; }
+}

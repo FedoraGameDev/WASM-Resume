@@ -1,26 +1,20 @@
 ﻿@page "/"
 
-<div class="cover-image" style="background-image: url('https://i.ytimg.com/vi/yUgx7s0VPs8/maxresdefault.jpg')">
-	<div class="image-filter">
-		<div class="cover-text">
-			<h1>Jimmy Satterfield</h1>
-			<h3>@((MarkupString)TitleContent)</h3>
-		</div>
+<FullscreenBackground URL="https://i.ytimg.com/vi/yUgx7s0VPs8/maxresdefault.jpg">
+	<TitleCard MainTitle="Jimmy Satterfield">@((MarkupString)TitleContent)</TitleCard>
 
-		<div class="post-text">
-			<a class="button" href="/application-development"><h3>Application Development</h3></a>
-			<a class="button" href="/web-development"><h3>Web Development</h3></a>
-			<a class="button" href="/game-development"><h3>Game Development</h3></a>
-			<a class="button" href="/"><h3>Bottom Text</h3></a>
-		</div>
+	<div class="post-text">
+		<a class="button" href="/application-development"><h3>Application Development</h3></a>
+		<a class="button" href="/web-development"><h3>Web Development</h3></a>
+		<a class="button" href="/game-development"><h3>Game Development</h3></a>
+		<a class="button" href="/"><h3>Bottom Text</h3></a>
 	</div>
-</div>
+</FullscreenBackground>
 
 @code {
-	string TitleContent => $"I {_title}{Cursor}";
-	string Cursor => _showCursor ? "|" : "&nbsp;";
+	string TitleContent { get; set; }
 
-	static readonly string[] _possibleTitles = new string[]
+	TypedText _typedText = new TypedText(new string[]
 	{
 		"am a developer",
 		"am fluent in C#",
@@ -30,87 +24,17 @@
 		"make websites",
 		"work with Unity",
 		"run real-time simulations"
-	};
-
-	Random _random = new Random();
-	int[] _titleOrder;
-	int _currentTitleIndex = 0;
-	string _title = _possibleTitles[0];
-	string _nextTitle = _possibleTitles[0];
-	float _repeatDelay = 5f;
-	float _characterTypeDelay = 0.05f;
-	float _characterTypeVariance = 0.03f;
-	float _cursorBlinkDelay = 0.5f;
-	bool _showCursor = true;
-
-	void ClickButton()
-	{
-		Console.WriteLine("Button Clicked!");
-	}
+	});
 
 	protected override async Task OnInitializedAsync()
 	{
-		BlinkCursor();
-
-		_titleOrder = new int[_possibleTitles.Length];
-		for (int i = 0; i < _possibleTitles.Length; i++)
-			_titleOrder[i] = i;
-
-		while (true)
-		{
-			await Task.Delay((int)(_repeatDelay * 1000));
-			await DeleteCurrentTitle();
-			ChooseNextTitle();
-			await WriteNextTitle();
-		}
+		_typedText.TextUpdated += TextUpdated;
+		await _typedText.InitializeAsync();
 	}
 
-	async Task BlinkCursor()
+	void TextUpdated(string text)
 	{
-		while (true)
-		{
-			await Task.Delay((int)(_cursorBlinkDelay * 1000));
-			_showCursor = !_showCursor;
-			StateHasChanged();
-		}
-	}
-
-	async Task DeleteCurrentTitle()
-	{
-		while (_title.Length > 0)
-		{
-			await Task.Delay(GetCharacterTypeDelay());
-			_title = _title.Substring(0, _title.Length - 1);
-			StateHasChanged();
-		}
-	}
-
-	void ChooseNextTitle()
-	{
-		_currentTitleIndex++;
-		if (_currentTitleIndex == _possibleTitles.Length)
-		{
-			_currentTitleIndex = 0;
-			_titleOrder = _titleOrder.OrderBy(x => _random.Next()).ToArray();
-		}
-
-		_nextTitle = _possibleTitles[_titleOrder[_currentTitleIndex]];
-	}
-
-	async Task WriteNextTitle()
-	{
-		while (_title.Length < _nextTitle.Length)
-		{
-			await Task.Delay(GetCharacterTypeDelay());
-			_title += _nextTitle.Substring(_title.Length, 1);
-			StateHasChanged();
-		}
-	}
-
-	int GetCharacterTypeDelay()
-	{
-		int delayMin = (int)((_characterTypeDelay - _characterTypeVariance) * 1000);
-		int delayMax = (int)((_characterTypeDelay + _characterTypeVariance) * 1000);
-		return _random.Next(delayMin, delayMax);
+		TitleContent = text;
+		StateHasChanged();
 	}
 }

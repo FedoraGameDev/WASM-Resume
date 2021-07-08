@@ -1,32 +1,4 @@
-﻿.cover-image {
-	width: 100%;
-	height: 100%;
-	background-size: cover;
-	background-position: center;
-}
-
-.image-filter {
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 64, 0.25);
-	padding-top: 2em;
-}
-
-.cover-text {
-	background-color: rgba(0, 0, 0, 0.5);
-	color: white;
-	font-weight: bold;
-	border: 3px solid #455e8c;
-	border-radius: 2px;
-	width: 80%;
-	padding: 20px;
-	text-align: center;
-	font-family: monospace;
-	backdrop-filter: blur(1px);
-	margin: 0 auto;
-}
-
-.post-text {
+﻿.post-text {
 	width: 80%;
 	margin: 0 auto;
 	padding-top: 2em;
@@ -87,31 +59,12 @@
 }
 
 @media (max-width: 640.98px) {
-	.cover-text {
-		width: 100%;
-		border-radius: 0px;
-	}
-
 	.post-text {
 		width: 100%;
 	}
 }
 
 @media (max-width: 420px) {
-	.image-filter {
-		padding-top: 1rem;
-	}
-
-	.cover-text {
-		h1 {
-			font-size: 2rem;
-		}
-
-		h3 {
-			font-size: 1rem;
-		}
-	}
-
 	.post-text {
 		padding-top: 1rem;
 

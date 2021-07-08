@@ -1,0 +1,12 @@
+﻿<div class="cover-text">
+	<h1>@MainTitle</h1>
+	<h3>@ChildContent</h3>
+</div>
+
+@code {
+	[Parameter]
+	public string MainTitle { get; set; }
+
+	[Parameter]
+	public RenderFragment ChildContent { get; set; }
+}
