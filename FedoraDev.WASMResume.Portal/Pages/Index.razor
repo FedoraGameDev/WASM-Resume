@@ -1,6 +1,20 @@
 ﻿@page "/"
 
-<CoverImage URL="https://i.ytimg.com/vi/yUgx7s0VPs8/maxresdefault.jpg" TitleContent="Jimmy Satterfield" ParagraphContent="@TitleContent" />
+<div class="cover-image" style="background-image: url('https://i.ytimg.com/vi/yUgx7s0VPs8/maxresdefault.jpg')">
+	<div class="image-filter">
+		<div class="cover-text">
+			<h1>Jimmy Satterfield</h1>
+			<h3>@((MarkupString)TitleContent)</h3>
+		</div>
+
+		<div class="post-text">
+			<a class="button" href="/application-development"><h3>Application Development</h3></a>
+			<a class="button" href="/web-development"><h3>Web Development</h3></a>
+			<a class="button" href="/game-development"><h3>Game Development</h3></a>
+			<a class="button" href="/"><h3>Bottom Text</h3></a>
+		</div>
+	</div>
+</div>
 
 @code {
 	string TitleContent => $"I {_title}{Cursor}";
@@ -28,6 +42,11 @@
 	float _characterTypeVariance = 0.03f;
 	float _cursorBlinkDelay = 0.5f;
 	bool _showCursor = true;
+
+	void ClickButton()
+	{
+		Console.WriteLine("Button Clicked!");
+	}
 
 	protected override async Task OnInitializedAsync()
 	{
