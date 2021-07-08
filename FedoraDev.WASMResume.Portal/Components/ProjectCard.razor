@@ -1,0 +1,18 @@
+﻿<div class="project-card">
+	<div class="project-title">@ProjectTitle</div>
+	<div class="project-description">@ProjectDescription</div>
+	<div class="project-links">
+		@ChildContent
+	</div>
+</div>
+
+@code {
+	[Parameter]
+	public string ProjectTitle { get; set; }
+
+	[Parameter]
+	public string ProjectDescription { get; set; }
+
+	[Parameter]
+	public RenderFragment ChildContent { get; set; }
+}
