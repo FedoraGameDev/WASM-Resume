@@ -1,23 +1,25 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
-    @*<a class="navbar-brand" href="">Resume</a>*@
-    <button class="navbar-toggler" @onclick="ToggleNavMenu">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-</div>
+﻿<div class="sidebar">
+	<div class="top-row pl-4 navbar navbar-dark">
+		@*<a class="navbar-brand" href="">Resume</a>*@
+		<button class="navbar-toggler" @onclick="ToggleNavMenu">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+	</div>
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <ul class="nav flex-row">
-		<li class="nav-item px-3">
-			<NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-				<span class="oi oi-home" aria-hidden="true"></span> Home
-			</NavLink>
-		</li>
-		<li class="nav-item px-3">
-			<NavLink class="nav-link" href="/contact" Match="NavLinkMatch.All">
-				<span class="oi oi-envelope-closed" aria-hidden="true"></span> Contact
-			</NavLink>
-		</li>
-    </ul>
+	<div class="nav-menu @NavMenuCssClass" @onclick="ToggleNavMenu">
+		<ul class="nav flex-column">
+			<li class="nav-item">
+				<NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+					<div class="oi oi-home" aria-hidden="true" />
+				</NavLink>
+			</li>
+			<li class="nav-item">
+				<NavLink class="nav-link" href="/contact" Match="NavLinkMatch.All">
+					<div class="oi oi-envelope-closed" aria-hidden="true" />
+				</NavLink>
+			</li>
+		</ul>
+	</div>
 </div>
 
 @code {

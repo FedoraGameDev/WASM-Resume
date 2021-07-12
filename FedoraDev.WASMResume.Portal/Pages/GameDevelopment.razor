@@ -1,17 +1,20 @@
 ﻿@page "/game-development"
 
 <FullscreenBackground URL="https://i.ytimg.com/vi/yUgx7s0VPs8/maxresdefault.jpg">
-	<ProjectCard ProjectTitle="Test Project" ProjectDescription="Test description lorem ipsum dat brink desu neiwa jo totem du un fonts.">
-		<a class="link-item" href="https://www.github.com/FedoraGameDev"><img class="link-image" src="https://cdn.iconscout.com/icon/free/png-256/github-3215409-2673827.png" /></a>
-		<a class="link-item" href="https://www.github.com/FedoraGameDev"><img class="link-image" src="https://cdn.iconscout.com/icon/free/png-256/github-3215409-2673827.png" /></a>
-	</ProjectCard>
-
-	<ProjectCard ProjectTitle="Simple Package" ProjectDescription="Test description lorem ipsum dat brink desu neiwa jo totem du un fonts.">
-		<a class="link-item" href="https://www.github.com/FedoraGameDev"><img class="link-image" src="https://cdn.iconscout.com/icon/free/png-256/github-3215409-2673827.png" /></a>
-		<a class="link-item" href="https://www.github.com/FedoraGameDev"><img class="link-image" src="https://cdn.iconscout.com/icon/free/png-256/github-3215409-2673827.png" /></a>
-	</ProjectCard>
+	<ProjectCard ProjectTitle="Test Project"   ProjectDescription="Test description lorem ipsum dat brink desu neiwa jo totem du un fonts." ProjectLinks="_testProjectLinks"/>
+	<ProjectCard ProjectTitle="Simple Package" ProjectDescription="Test description lorem ipsum dat brink desu neiwa jo totem du un fonts." ProjectLinks="_simplePackageLinks"/>
 </FullscreenBackground>
 
 @code {
+	List<string> _testProjectLinks = new List<string>
+	{
+		"https://www.github.com/FedoraGameDev",
+		"https://www.github.com/FedoraGameDev"
+	};
 
+	List<string> _simplePackageLinks = new List<string>
+{
+		"https://www.github.com/FedoraGameDev",
+		"https://www.github.com/FedoraGameDev"
+};
 }

@@ -1,13 +1,91 @@
 ﻿@inherits LayoutComponentBase
 
 <div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+    <NavMenu />
+	<button class="attract-down @WideChevron" @onclick="ChevronClicked">
+		<div class="chevron" />
+		<div class="chevron" />
+		<div class="chevron" />
+	</button>
 
     <div class="main">
-        <div class="content px-4">
-            @Body
-        </div>
+		<div class="content px-4">
+			<div class="background">
+				<div class="cover-text">
+					<div class="attraction-wrapper">
+						<h1>
+							<span class="first-name">Jimmy</span> <span class="last-name">Satterfield</span>
+						</h1>
+						<h3 class="typed-text">@((MarkupString)TitleContent)</h3>
+					</div>
+				</div>
+
+				<div class="flex-column">
+					<div class="post-text">
+						<div class="sub-content" id="first-card"><div class="button"><h3>Application Development</h3></div></div>
+						<div class="sub-content"><div class="button"><h3>Application Development</h3></div></div>
+						<div class="sub-content"><div class="button"><h3>Application Development</h3></div></div>
+						<div class="sub-content"><div class="button"><h3>Application Development</h3></div></div>
+						<div class="sub-content"><div class="button"><h3>Application Development</h3></div></div>
+						<div class="sub-content"><div class="button"><h3>Application Development</h3></div></div>
+						<div class="sub-content"><div class="button"><h3>Application Development</h3></div></div>
+						<div class="sub-content"><div class="button"><h3>Application Development</h3></div></div>
+						<div class="sub-content"><div class="button"><h3>Application Development</h3></div></div>
+						<div class="sub-content"><div class="button"><h3>Application Development</h3></div></div>
+					</div>
+					<div class="content-body hidden">@Body</div>
+				</div>
+			</div>
+		</div>
     </div>
 </div>
+
+@code {
+	[Inject]
+	public IJSRuntime JSRuntime { get; set; }
+	string TitleContent { get; set; }
+	string WideChevron => _wideChevron ? "wide" : "";
+
+	bool _wideChevron = false;
+
+	TypedText _typedText = new TypedText(new string[]
+	{
+		"Definitely a developer.",
+		"Now with Web Assembly!",
+		"Strictly-typed to taste.",
+		"Invasive species to the .NET ecosystem.",
+		"Still obsessing over this color scheme.",
+		"Can generate interactive experiences.",
+		"Unity novice since 2011.",
+		"Self-taught by a terrible teacher."
+	}, charactersPerSecond: 25);
+
+	protected override async Task OnInitializedAsync()
+	{
+		_typedText.TextUpdated += TextUpdated;
+		_ = CycleChevron();
+		await _typedText.InitializeAsync();
+	}
+
+	void ChevronClicked()
+	{
+		_ = JSRuntime.InvokeVoidAsync("ScrollToPoint", 100);
+	}
+
+	void TextUpdated(string text)
+	{
+		TitleContent = text;
+		StateHasChanged();
+	}
+
+	async Task CycleChevron()
+	{
+		while (true)
+		{
+			await Task.Delay(1000);
+			_wideChevron = !_wideChevron;
+			await Task.Delay(501);
+			_wideChevron = !_wideChevron;
+		}
+	}
+}

@@ -1,8 +1,26 @@
 ﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
+*:not(.dont-animate) {
+	-webkit-transition: all 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+	-moz-transition: all 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+	-o-transition: all 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+	-ms-transition: all 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+	transition: all 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+
+.hidden {
+	display: none !important;
+}
+
 html, body {
 	font-family: monospace, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	height: 100vh;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
 }
 
 #app {
@@ -11,10 +29,6 @@ html, body {
 
 .page {
 	height: 100%;
-}
-
-.main {
-	padding-top: 5rem;
 }
 
 a, .btn-link {

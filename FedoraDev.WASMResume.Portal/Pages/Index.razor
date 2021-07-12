@@ -1,40 +1,5 @@
 ﻿@page "/"
 
-<FullscreenBackground URL="https://i.ytimg.com/vi/yUgx7s0VPs8/maxresdefault.jpg">
-	<TitleCard MainTitle="Jimmy Satterfield">@((MarkupString)TitleContent)</TitleCard>
-
-	<div class="post-text">
-		<a class="button" href="/application-development"><h3>Application Development</h3></a>
-		<a class="button" href="/web-development"><h3>Web Development</h3></a>
-		<a class="button" href="/game-development"><h3>Game Development</h3></a>
-		<a class="button" href="/"><h3>Bottom Text</h3></a>
-	</div>
-</FullscreenBackground>
-
 @code {
-	string TitleContent { get; set; }
-
-	TypedText _typedText = new TypedText(new string[]
-	{
-		"am a developer",
-		"am fluent in C#",
-		"am acquanted with dotnet",
-		"enjoy puzzles",
-		"create games",
-		"make websites",
-		"work with Unity",
-		"run real-time simulations"
-	});
-
-	protected override async Task OnInitializedAsync()
-	{
-		_typedText.TextUpdated += TextUpdated;
-		await _typedText.InitializeAsync();
-	}
-
-	void TextUpdated(string text)
-	{
-		TitleContent = text;
-		StateHasChanged();
-	}
+	//
 }

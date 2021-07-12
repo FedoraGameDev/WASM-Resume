@@ -1,8 +1,15 @@
 ﻿<div class="project-card">
-	<div class="project-title">@ProjectTitle</div>
-	<div class="project-description">@ProjectDescription</div>
-	<div class="project-links">
-		@ChildContent
+	<div class="project-title">
+		<h1><span>@ProjectTitle</span></h1>
+		<div class="project-links">
+			@for (int i = 0; i < ProjectLinks.Count; i++)
+			{
+				<a class="link-item" href="@ProjectLinks[i]"><img class="link-image" src="https://cdn.iconscout.com/icon/free/png-256/github-3215409-2673827.png" /></a>
+			}
+		</div>
+	</div>
+	<div class="project-description">
+		<h2>@ProjectDescription</h2>
 	</div>
 </div>
 
@@ -14,5 +21,5 @@
 	public string ProjectDescription { get; set; }
 
 	[Parameter]
-	public RenderFragment ChildContent { get; set; }
+	public List<string> ProjectLinks { get; set; }
 }

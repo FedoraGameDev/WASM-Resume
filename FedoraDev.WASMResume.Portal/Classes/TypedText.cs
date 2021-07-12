@@ -8,7 +8,7 @@ namespace FedoraDev.WASMResume.Portal.Classes
 	{
 		public Action<string> TextUpdated { get; set; }
 
-		string TextContent => $"I {_text}{Cursor}";
+		string TextContent => $"{_text}{Cursor}";
 		string Cursor => _showCursor ? "|" : "&nbsp;";
 
 		readonly string[] _possibleTexts;
@@ -34,7 +34,7 @@ namespace FedoraDev.WASMResume.Portal.Classes
 			for (int i = 0; i < _possibleTexts.Length; i++)
 				_textOrder[i] = i;
 
-			_characterTypeDelay = charactersPerSecond / 60f;
+			_characterTypeDelay = 1f / charactersPerSecond;
 			_characterTypeVariance = typeSpeedVariance;
 			_repeatDelay = repeatDelay;
 			_cursorBlinkDelay = 1f / (cursorBlinksPerSecond * 2f);
